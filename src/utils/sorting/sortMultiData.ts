@@ -2,12 +2,12 @@ import { SortConfig } from "../hooks/useMultiSort";
 
 /**
  * Generic function to sort data based on multiple columns with priority
- * 
+ *
  * @param data - Array of items to sort
  * @param sorts - Array of sort configurations with priority
  * @param getValue - Function to extract the value to sort by from each item
  * @returns Sorted array
- * 
+ *
  * @example
  * const sorted = sortMultiData(
  *   products,
@@ -56,4 +56,3 @@ export function sortMultiData<T>(
     return 0;
   });
 }
-

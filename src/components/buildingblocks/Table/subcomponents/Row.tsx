@@ -6,11 +6,7 @@ export interface RowProps {
   onClick?: () => void;
 }
 
-const Row: React.FC<RowProps> = ({
-  children,
-  className = "",
-  onClick,
-}) => {
+const Row: React.FC<RowProps> = ({ children, className = "", onClick }) => {
   const baseClasses = onClick
     ? "hover:bg-gray-50 transition-colors cursor-pointer"
     : "hover:bg-gray-50 transition-colors";
@@ -23,4 +19,3 @@ const Row: React.FC<RowProps> = ({
 };
 
 export default Row;
-

@@ -12,4 +12,3 @@ Table.Row = Row;
 Table.Cell = Cell;
 
 export { Table };
-

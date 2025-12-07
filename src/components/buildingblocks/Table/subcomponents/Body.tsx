@@ -14,4 +14,3 @@ const Body: React.FC<BodyProps> = ({ children, className = "" }) => {
 };
 
 export default Body;
-

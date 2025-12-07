@@ -9,12 +9,11 @@ import {
 
 export interface HeaderCellProps {
   children: ReactNode;
-  onClick?: (e?: React.MouseEvent) => void;
+  onClick?: () => void;
   className?: string;
   sortable?: boolean;
   sortDirection?: "asc" | "desc" | null;
   sortType?: "text" | "number";
-  sortPriority?: number | null;
 }
 
 const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -24,7 +23,6 @@ const HeaderCell: React.FC<HeaderCellProps> = ({
   sortable = false,
   sortDirection = null,
   sortType = "text",
-  sortPriority = null,
 }) => {
   const baseClasses =
     "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider";

@@ -36,4 +36,3 @@ const Table = TableComponent as React.FC<TableProps> & {
 };
 
 export default Table;
-
