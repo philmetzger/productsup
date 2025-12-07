@@ -18,8 +18,8 @@ Welcome to the ProductsUp take-home challenge! This exercise is designed to eval
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd react-takehome-case
+git clone https://github.com/philmetzger/productsup
+cd productsup
 
 # Install dependencies
 npm install
