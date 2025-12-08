@@ -11,13 +11,16 @@ export const ProductsFilters: React.FC<ProductsFiltersProps> = ({
   selectedCategory,
   onCategoryChange,
 }) => (
-  <Select value={selectedCategory} onChange={onCategoryChange}>
-    <Select.Options>
-      {CATEGORIES.map((cat) => (
-        <Select.Option key={cat} value={cat}>
-          {cat}
-        </Select.Option>
-      ))}
-    </Select.Options>
-  </Select>
+  <div className="flex flex-col gap-2">
+    <Select.Label htmlFor="category-filter">Filter by category</Select.Label>
+    <Select value={selectedCategory} onChange={onCategoryChange}>
+      <Select.Options id="category-filter" name="category">
+        {CATEGORIES.map((cat) => (
+          <Select.Option key={cat} value={cat}>
+            {cat}
+          </Select.Option>
+        ))}
+      </Select.Options>
+    </Select>
+  </div>
 );

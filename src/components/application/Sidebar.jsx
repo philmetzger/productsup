@@ -15,7 +15,7 @@ const Sidebar = ({ currentPage, onNavigate }) => {
           </div>
           <span className="text-lg sm:text-xl font-bold">Dashboard</span>
         </div>
-        <nav className="space-y-2">
+        <nav className="space-y-2" aria-label="Primary">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -25,6 +25,7 @@ const Sidebar = ({ currentPage, onNavigate }) => {
                   ? "bg-blue-600 text-white"
                   : "text-gray-300 hover:bg-gray-800"
               }`}
+              aria-current={currentPage === item.id ? "page" : undefined}
             >
               <span className="text-lg sm:text-xl">
                 <item.icon className="w-5 h-5" />

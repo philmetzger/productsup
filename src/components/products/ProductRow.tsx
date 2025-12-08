@@ -2,11 +2,13 @@ import React from "react";
 import { Table } from "../buildingblocks/Table";
 import type { Product } from "../../domains/product";
 
-export interface ProductRowProps {
+export interface ProductTableRowProps {
   product: Product;
 }
 
-export const ProductRow: React.FC<ProductRowProps> = ({ product }) => (
+export const ProductTableRow: React.FC<ProductTableRowProps> = ({
+  product,
+}) => (
   <Table.Row key={product.id}>
     <Table.Cell>
       <div className="text-sm font-medium text-gray-900">{product.name}</div>

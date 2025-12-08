@@ -14,7 +14,7 @@ import { ProductsHeader } from "./ProductsHeader";
 import { ProductsFilters } from "./ProductsFilters";
 import { ProductsTableSkeleton } from "./ProductsTableSkeleton";
 import { ProductsTableEmptyState } from "./ProductsTableEmptyState";
-import { ProductRow } from "./ProductRow";
+import { ProductTableRow } from "./ProductRow";
 import { useProductsQueryParams } from "../../hooks/useProductsQueryParams";
 import { ProductsCardList } from "./ProductsCardList";
 import { ProductsCardsSkeleton } from "./ProductsCardsSkeleton";
@@ -137,7 +137,7 @@ const Products: React.FC = () => {
   );
 
   return (
-    <>
+    <main aria-labelledby="products-heading">
       <ProductsHeader />
 
       <div className="mb-4">
@@ -167,7 +167,7 @@ const Products: React.FC = () => {
       </div>
 
       {/* Desktop: table view */}
-      <Table className="hidden md:block">
+      <Table className="hidden md:block" ariaLabel="Products table">
         <Table.Header>
           <Table.HeaderCell>Product Name</Table.HeaderCell>
           <Table.HeaderCell>Category</Table.HeaderCell>
@@ -197,7 +197,7 @@ const Products: React.FC = () => {
             <ProductsTableEmptyState />
           ) : (
             paginatedProducts.map((product) => (
-              <ProductRow key={product.id} product={product} />
+              <ProductTableRow key={product.id} product={product} />
             ))
           )}
         </Table.Body>
@@ -216,7 +216,7 @@ const Products: React.FC = () => {
           totalItems={filteredProducts.length}
         />
       )}
-    </>
+    </main>
   );
 };
 

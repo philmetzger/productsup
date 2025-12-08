@@ -3,13 +3,20 @@ import React, { ReactNode } from "react";
 export interface TableProps {
   children: ReactNode;
   className?: string;
+  ariaLabel?: string;
 }
 
-const TableComponent: React.FC<TableProps> = ({ children, className = "" }) => {
+const TableComponent: React.FC<TableProps> = ({
+  children,
+  className = "",
+  ariaLabel,
+}) => {
   return (
     <div className={`bg-white rounded-lg shadow overflow-hidden ${className}`}>
       <div className="overflow-x-auto">
-        <table className="w-full">{children}</table>
+        <table className="w-full" aria-label={ariaLabel}>
+          {children}
+        </table>
       </div>
     </div>
   );

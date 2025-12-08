@@ -56,15 +56,52 @@ const HeaderCell: React.FC<HeaderCellProps> = ({
     }
   };
 
+  const ariaSort =
+    sortable && sortDirection
+      ? sortDirection === "asc"
+        ? "ascending"
+        : "descending"
+      : sortable
+      ? "none"
+      : undefined;
+
+  const labelText = typeof children === "string" ? children : undefined;
+
+  const sortStatus =
+    sortable && sortDirection
+      ? sortDirection === "asc"
+        ? "sorted ascending"
+        : "sorted descending"
+      : sortable
+      ? "not sorted"
+      : "";
+
   return (
     <th
       className={`${baseClasses} ${clickableClasses} ${className}`}
       onClick={onClick}
+      aria-sort={ariaSort}
     >
-      <div className="flex items-center gap-2">
-        <span>{children}</span>
-        {getSortIcon()}
-      </div>
+      {sortable || onClick ? (
+        <button
+          type="button"
+          className="flex items-center gap-2 w-full text-left cursor-pointer"
+          onClick={onClick}
+          aria-label={
+            labelText
+              ? `${labelText}, ${sortStatus}. Activate to change sort order.`
+              : undefined
+          }
+        >
+          <span>{children}</span>
+          {getSortIcon()}
+        </button>
+      ) : (
+        <div className="flex items-center gap-2">
+          <span>{children}</span>
+          {getSortIcon()}
+        </div>
+      )}
     </th>
   );
 };

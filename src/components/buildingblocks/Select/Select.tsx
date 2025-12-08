@@ -33,12 +33,20 @@ const SelectComponent: React.FC<SelectProps> = ({
 };
 
 const Select = SelectComponent as React.FC<SelectProps> & {
-  Label: React.ComponentType<{ children: ReactNode; className?: string }>;
+  Label: React.ComponentType<{
+    children: ReactNode;
+    className?: string;
+    htmlFor?: string;
+  }>;
   Options: React.ComponentType<{
     value?: string;
     onChange?: (value: string) => void;
     children: ReactNode;
     className?: string;
+    id?: string;
+    name?: string;
+    "aria-label"?: string;
+    "aria-labelledby"?: string;
   }>;
   Option: React.ComponentType<{ value: string; children: ReactNode }>;
 };

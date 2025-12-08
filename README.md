@@ -192,19 +192,27 @@ src/
 - Restructured the app into logical directories for a cleaner structure
 - Tried to create as many components as possible in order to create short be easy to test components
 - Created some buildingblocks (reusable components). Sort of like a design system
-- tests are close to the files they are testing in a directory called `__tests__`
-- No need for virtualization since we only show 10 products per page
+- tests are located close to the files they are testing in a directory called `__tests__`
+- No need for list virtualization since we only show 10 products per page
 
 ### Trade-offs
 
 - Implemented client-side pagination due to time constraints. However I update the url with the query params to make it easier to go to server side sorting
 - Used simple category filter instead of multi-select to focus on core requirements
+- Skeleton and empty states are implemented for key views, but the app assumes the local data “just works” and does not show rich error messages or retries, which would be needed in a production environment.
+- State is managed with React component state and custom hooks (e.g. sorting and pagination) instead of a global store like Context, Redux or Zustand. This is simpler for a small app but would be harder to scale to very complex shared state.
 
 ### What I'd Improve
 
-- Add unit tests for hooks, components, utils (Added 1 as an example)
+- Add more unit tests for hooks and utilities, plus integration tests for the main user flows (sorting, filtering, pagination, and switching layouts).
+- Replace the static JSON data with real API calls and add proper loading and error handling. Sort/filter on server
 - Add search functionality
 - Create more buildingblocks such as `<Text />`, `<Badge />`, etc. This would ensure a consistent UI/design
+
+### AI assistance
+- I used Cursor with GPT-5.1 first in plan mode and then agent mode for most tasks
+- Every file was reviewed by me to confirm its logic
+- I would create directories to restructure the app in order to help agent mode decide where to put files
 
 ### Time Breakdown
 
