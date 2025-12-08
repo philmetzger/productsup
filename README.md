@@ -207,7 +207,7 @@ src/
 
 - Add more tests, especially for utils and hooks, but also for components with special render logic
 - Replace the static JSON data with real API calls and add proper loading and error handling. Sort/filter on server
-- Add missing empty states
+- Add missing empty states and loading states when going between pages (especially important with an api)
 - Add search functionality
 - Create more buildingblocks such as `<Text />`, `<Badge />`, etc. This would ensure a consistent UI/design
 - Color code stock values so users know when there are running low. e.g. red for less than 5
