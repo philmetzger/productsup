@@ -28,14 +28,6 @@ export interface UseMultiSortOptions<T = string> {
 /**
  * Generic hook for managing multi-column table sorting state
  *
- * Supports sorting by multiple columns with priority ordering.
- * The most recently clicked column becomes the primary sort (priority 1).
- *
- * Click behavior:
- * - First click: Add column as primary sort (ascending, priority 1), shift existing sorts down
- * - Second click: Toggle direction to descending
- * - Third click: Remove column from sort, shift remaining sorts up
- *
  * Multiple columns can be sorted simultaneously. The last clicked column
  * always has the highest priority (1), with previous sorts shifted down.
  *
@@ -43,16 +35,6 @@ export interface UseMultiSortOptions<T = string> {
  *
  * @example
  * const { sorts, handleSort, getSortDirection, getSortPriority } = useMultiSort();
- *
- * // In your component:
- * <HeaderCell
- *   sortable
- *   onClick={(e) => handleSort("name", e)}
- *   sortDirection={getSortDirection("name")}
- *   sortPriority={getSortPriority("name")}
- * >
- *   Name
- * </HeaderCell>
  */
 export const useMultiSort = <T = string>(
   options?: UseMultiSortOptions<T>

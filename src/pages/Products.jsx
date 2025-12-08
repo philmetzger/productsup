@@ -3,7 +3,7 @@ import Products from "../components/products/Products";
 
 const ProductsPage = () => {
   return (
-    <div className="p-6">
+    <div>
       <Products />
     </div>
   );

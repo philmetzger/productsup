@@ -7,7 +7,9 @@ export interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ children, className = "" }) => {
   return (
-    <thead className={`bg-gray-50 border-b border-gray-200 ${className}`}>
+    <thead
+      className={`bg-gray-50 border-b border-gray-200 text-xs sm:text-sm ${className}`}
+    >
       <tr>{children}</tr>
     </thead>
   );

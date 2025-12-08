@@ -187,27 +187,31 @@ src/
 
 ### Architecture Decisions
 
-- Created custom `usePagination` hook to encapsulate pagination logic...
-- Chose to keep sorting state in ProductsPage rather than global state because...
+- Created generic custom `usePagination` hook to encapsulate pagination logic
+- Created genertic custom `useMultiSort` hook to easily allow sorting my multiple columns
+- Restructured the app into logical directories for a cleaner structure
+- Tried to create as many components as possible in order to create short be easy to test components
+- Created some buildingblocks (reusable components). Sort of like a design system
+- tests are close to the files they are testing in a directory called `__tests__`
+- No need for virtualization since we only show 10 products per page
 
 ### Trade-offs
 
-- Implemented client-side pagination due to time constraints. For production, I'd...
-- Used simple category filter instead of multi-select to focus on core requirements...
+- Implemented client-side pagination due to time constraints. However I update the url with the query params to make it easier to go to server side sorting
+- Used simple category filter instead of multi-select to focus on core requirements
 
 ### What I'd Improve
 
-- Add unit tests for sorting and pagination logic
-- Implement virtualization for 10k+ products
-- Add debounced search functionality
-- Better error handling and loading states
+- Add unit tests for hooks, components, utils (Added 1 as an example)
+- Add search functionality
+- Create more buildingblocks such as `<Text />`, `<Badge />`, etc. This would ensure a consistent UI/design
 
 ### Time Breakdown
 
 - Sorting: 1 hour
-- Pagination: 1.5 hours
+- Pagination: 1 hours
 - Responsive layout: 1 hour
-- Polish & refactoring: 30 minutes
+- Polish & refactoring: 1 hour
 ```
 
 ---

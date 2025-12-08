@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { PageRange } from "../../utils/hooks/usePagination";
+import type { PageRange } from "../../hooks/usePagination";
 
 export interface PaginationProps {
   currentPage: number;

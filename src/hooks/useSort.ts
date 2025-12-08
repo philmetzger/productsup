@@ -17,15 +17,6 @@ export interface UseSortReturn<T = string> {
  *
  * @example
  * const { sortColumn, sortDirection, handleSort } = useSort();
- *
- * // In your component:
- * <HeaderCell
- *   sortable
- *   onClick={() => handleSort("name")}
- *   sortDirection={sortColumn === "name" ? sortDirection : null}
- * >
- *   Name
- * </HeaderCell>
  */
 export const useSort = <T = string>(): UseSortReturn<T> => {
   const [sortColumn, setSortColumn] = useState<SortColumn<T>>(null);

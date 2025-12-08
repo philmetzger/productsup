@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div className="p-6">
+    <div>
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">
           Senior Frontend Developer - Take-Home Challenge
