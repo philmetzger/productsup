@@ -17,6 +17,14 @@ export interface UseMultiSortReturn<T = string> {
   getSortPriority: (column: T) => number | null;
 }
 
+export interface UseMultiSortOptions<T = string> {
+  /**
+   * Optional initial sort configuration.
+   * Useful when hydrating sort state from URL params or persisted storage.
+   */
+  initialSorts?: SortConfig<T>[];
+}
+
 /**
  * Generic hook for managing multi-column table sorting state
  *
@@ -46,8 +54,12 @@ export interface UseMultiSortReturn<T = string> {
  *   Name
  * </HeaderCell>
  */
-export const useMultiSort = <T = string>(): UseMultiSortReturn<T> => {
-  const [sorts, setSorts] = useState<SortConfig<T>[]>([]);
+export const useMultiSort = <T = string>(
+  options?: UseMultiSortOptions<T>
+): UseMultiSortReturn<T> => {
+  const { initialSorts } = options || {};
+
+  const [sorts, setSorts] = useState<SortConfig<T>[]>(() => initialSorts ?? []);
 
   const handleSort = useCallback((column: T, event?: React.MouseEvent) => {
     setSorts((currentSorts) => {

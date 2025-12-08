@@ -32,7 +32,11 @@ const Table = TableComponent as React.FC<TableProps> & {
     className?: string;
     onClick?: () => void;
   }>;
-  Cell: React.ComponentType<{ children: ReactNode; className?: string }>;
+  Cell: React.ComponentType<{
+    children: ReactNode;
+    className?: string;
+    colSpan?: number;
+  }>;
 };
 
 export default Table;
