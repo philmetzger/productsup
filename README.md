@@ -214,6 +214,7 @@ src/
 - Remove unused files. I have left useSort with tests just as an example :)
 - Add some cursor rules and instruction files as I go to help Cursor better understand how I like to structure my code
 - Add eslint and prettier for more automated clean code
+- I would generally convert this to a Next.JS project as it would allow me to easily add api endpoints amoung other things
 
 ### AI assistance
 
