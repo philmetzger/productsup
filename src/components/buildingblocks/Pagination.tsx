@@ -5,10 +5,6 @@ import type { PageRange } from "../../hooks/usePagination";
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  canPreviousPage: boolean;
-  canNextPage: boolean;
-  onPrevious: () => void;
-  onNext: () => void;
   onPageChange: (page: number) => void;
   pageRange: PageRange;
   totalItems: number;
@@ -17,10 +13,6 @@ export interface PaginationProps {
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
-  canPreviousPage,
-  canNextPage,
-  onPrevious,
-  onNext,
   onPageChange,
   pageRange,
   totalItems,
@@ -31,6 +23,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   );
 
   const hasItems = totalItems > 0;
+  const hasPreviousPage = currentPage > 1;
+  const hasNextPage = currentPage < totalPages;
 
   return (
     <nav
@@ -54,10 +48,10 @@ export const Pagination: React.FC<PaginationProps> = ({
       <div className="inline-flex items-center justify-end gap-2">
         <button
           type="button"
-          onClick={onPrevious}
-          disabled={!canPreviousPage}
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={!hasPreviousPage}
           className={`inline-flex h-10 items-center justify-center rounded border px-3 py-1 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
-            canPreviousPage
+            hasPreviousPage
               ? "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 cursor-pointer"
               : "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400"
           }`}
@@ -89,10 +83,10 @@ export const Pagination: React.FC<PaginationProps> = ({
 
         <button
           type="button"
-          onClick={onNext}
-          disabled={!canNextPage}
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={!hasNextPage}
           className={`inline-flex h-10 items-center justify-center rounded border px-3 py-1 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
-            canNextPage
+            hasNextPage
               ? "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 cursor-pointer"
               : "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400"
           }`}

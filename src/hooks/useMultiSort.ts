@@ -49,25 +49,26 @@ export const useMultiSort = <T = string>(
 
       if (existingSort) {
         // Column already sorted - move to top and toggle direction, or remove
-        if (existingSort.direction === "asc") {
-          // Move to priority 1 and change to desc
+        if (existingSort.direction === "desc") {
+          // Move to priority 1 and change to asc
           const otherSorts = currentSorts
             .filter((s) => s.column !== column)
             .map((s) => ({ ...s, priority: s.priority + 1 }));
-          return [{ column, direction: "desc", priority: 1 }, ...otherSorts];
+          return [{ column, direction: "asc", priority: 1 }, ...otherSorts];
         } else {
-          // Remove from sort
+          // Remove from sort (next click after asc -> none)
           const removed = currentSorts.filter((s) => s.column !== column);
           // Recalculate priorities (most recent = priority 1)
           return removed.map((s, index) => ({ ...s, priority: index + 1 }));
         }
       } else {
-        // New column to sort - add as primary (priority 1), shift others down
+        // New column to sort - start with descending and add as primary (priority 1),
+        // shifting existing sorts down in priority
         const updatedSorts = currentSorts.map((s) => ({
           ...s,
           priority: s.priority + 1,
         }));
-        return [{ column, direction: "asc", priority: 1 }, ...updatedSorts];
+        return [{ column, direction: "desc", priority: 1 }, ...updatedSorts];
       }
     });
   }, []);

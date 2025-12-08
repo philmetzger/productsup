@@ -43,11 +43,7 @@ export interface UsePaginationResult {
   startIndex: number;
   endIndex: number;
   pageRange: PageRange;
-  canPreviousPage: boolean;
-  canNextPage: boolean;
   goToPage: (page: number) => void;
-  goToNextPage: () => void;
-  goToPreviousPage: () => void;
 }
 
 const clamp = (value: number, min: number, max: number): number => {
@@ -105,14 +101,6 @@ export const usePagination = ({
     [safeSetPage]
   );
 
-  const goToNextPage = useCallback(() => {
-    safeSetPage(currentPage + 1);
-  }, [currentPage, safeSetPage]);
-
-  const goToPreviousPage = useCallback(() => {
-    safeSetPage(currentPage - 1);
-  }, [currentPage, safeSetPage]);
-
   const { startIndex, endIndex, pageRange } = useMemo(() => {
     if (totalItems === 0) {
       return {
@@ -135,9 +123,6 @@ export const usePagination = ({
     };
   }, [currentPage, pageSize, totalItems]);
 
-  const canPreviousPage = currentPage > 1;
-  const canNextPage = currentPage < totalPages;
-
   return {
     currentPage,
     pageSize,
@@ -146,10 +131,6 @@ export const usePagination = ({
     startIndex,
     endIndex,
     pageRange,
-    canPreviousPage,
-    canNextPage,
     goToPage,
-    goToNextPage,
-    goToPreviousPage,
   };
 };

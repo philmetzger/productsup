@@ -12,7 +12,6 @@ export const ProductsFilters: React.FC<ProductsFiltersProps> = ({
   onCategoryChange,
 }) => (
   <div className="flex flex-col gap-2">
-    <Select.Label htmlFor="category-filter">Filter by category</Select.Label>
     <Select value={selectedCategory} onChange={onCategoryChange}>
       <Select.Options id="category-filter" name="category">
         {CATEGORIES.map((cat) => (

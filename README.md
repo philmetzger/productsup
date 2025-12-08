@@ -44,11 +44,11 @@ The app will be available at `http://localhost:5173`
 
 Enhance the Products table with sorting capabilities:
 
-- [ ] Add sorting by **Product Name** (A-Z, Z-A)
-- [ ] Add sorting by **Price** (Low to High, High to Low)
-- [ ] Make column headers clickable with visual indicators (arrows/icons)
-- [ ] Ensure sorting works seamlessly with the existing category filter
-- [ ] Maintain sort state when switching between categories
+- [x] Add sorting by **Product Name** (A-Z, Z-A)
+- [x] Add sorting by **Price** (Low to High, High to Low)
+- [x] Make column headers clickable with visual indicators (arrows/icons)
+- [x] Ensure sorting works seamlessly with the existing category filter
+- [x] Maintain sort state when switching between categories
 
 **Bonus:** Consider multi-column sorting or using lucide-react icons for visual feedback
 
@@ -58,12 +58,12 @@ Enhance the Products table with sorting capabilities:
 
 Implement client-side pagination for the product list:
 
-- [ ] Display **10 products per page**
-- [ ] Add Previous/Next navigation buttons
-- [ ] Show page numbers with current page highlighted
-- [ ] Display items range (e.g., "Showing 1-10 of 15 products")
-- [ ] Reset to page 1 when filters or sorting changes
-- [ ] Structure code to allow easy transition to **server-side pagination** later
+- [x] Display **10 products per page**
+- [x] Add Previous/Next navigation buttons
+- [x] Show page numbers with current page highlighted
+- [x] Display items range (e.g., "Showing 1-10 of 15 products")
+- [x] Reset to page 1 when filters or sorting changes
+- [x] Structure code to allow easy transition to **server-side pagination** later
 
 **Architecture Note:** Consider creating a reusable `usePagination` hook
 
@@ -73,11 +73,11 @@ Implement client-side pagination for the product list:
 
 Make the product table responsive across all devices:
 
-- [ ] **Desktop (1024px+)**: Full table layout (current implementation)
-- [ ] **Tablet (768px-1023px)**: Optimized table with adjusted spacing
-- [ ] **Mobile (<768px)**: Convert to **card or grid layout**
-- [ ] Maintain all functionality (filter, sort, pagination) across breakpoints
-- [ ] Ensure touch-friendly tap targets on mobile
+- [x] **Desktop (1024px+)**: Full table layout (current implementation)
+- [x] **Tablet (768px-1023px)**: Optimized table with adjusted spacing
+- [x] **Mobile (<768px)**: Convert to **card or grid layout**
+- [x] Maintain all functionality (filter, sort, pagination) across breakpoints
+- [x] Ensure touch-friendly tap targets on mobile
 
 **Tailwind Tip:** Use responsive utilities like `hidden`, `block`, `md:table`, `grid`, etc.
 
@@ -191,35 +191,43 @@ src/
 - Created genertic custom `useMultiSort` hook to easily allow sorting my multiple columns
 - Restructured the app into logical directories for a cleaner structure
 - Tried to create as many components as possible in order to create short be easy to test components
-- Created some buildingblocks (reusable components). Sort of like a design system
+- Created some buildingblocks (reusable components). A sort of design system
 - tests are located close to the files they are testing in a directory called `__tests__`
 - No need for list virtualization since we only show 10 products per page
+- Separate business logic as much as possible from presentation logic
 
 ### Trade-offs
 
 - Implemented client-side pagination due to time constraints. However I update the url with the query params to make it easier to go to server side sorting
 - Used simple category filter instead of multi-select to focus on core requirements
-- Skeleton and empty states are implemented for key views, but the app assumes the local data “just works” and does not show rich error messages or retries, which would be needed in a production environment.
-- State is managed with React component state and custom hooks (e.g. sorting and pagination) instead of a global store like Context, Redux or Zustand. This is simpler for a small app but would be harder to scale to very complex shared state.
+- Skeleton is implemented for key views, but the app assumes the local data “just works” and does not show rich error messages or retries, which would be needed in a production environment
+- State is managed with React component state and custom hooks (e.g. sorting and pagination) instead of a global store like Context, Redux or Zustand. This is simpler for a small app but would be harder to scale to very complex shared state
 
 ### What I'd Improve
 
-- Add more unit tests for hooks and utilities, plus integration tests for the main user flows (sorting, filtering, pagination, and switching layouts).
+- Add more tests, especially for utils and hooks, but also for components with special render logic
 - Replace the static JSON data with real API calls and add proper loading and error handling. Sort/filter on server
+- Add missing empty states
 - Add search functionality
 - Create more buildingblocks such as `<Text />`, `<Badge />`, etc. This would ensure a consistent UI/design
+- Color code stock values so users know when there are running low. e.g. red for less than 5
+- Remove unused files. I have left useSort with tests just as an example :)
+- Add some cursor rules and instruction files as I go to help Cursor better understand how I like to structure my code
+- Add eslint and prettier for more automated clean code
 
 ### AI assistance
+
 - I used Cursor with GPT-5.1 first in plan mode and then agent mode for most tasks
-- Every file was reviewed by me to confirm its logic
-- I would create directories to restructure the app in order to help agent mode decide where to put files
+- Initially Cursor created 1 file with all the code, but then I steered it into the way I prefer in which I separated business logic from presentation logic. Some of it I did manually and some I just let Cursor do the heavy lifting.
+- Every file was reviewed by me to confirm its logic, with minor manual changes by me
+- I created directories to restructure the app in order to help agent mode decide where to put files
 
 ### Time Breakdown
 
 - Sorting: 1 hour
 - Pagination: 1 hours
 - Responsive layout: 1 hour
-- Polish & refactoring: 1 hour
+- Polish & refactoring: 1.5 hours
 ```
 
 ---

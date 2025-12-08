@@ -26,19 +26,20 @@ export const useSort = <T = string>(): UseSortReturn<T> => {
     (column: T) => {
       if (sortColumn === column) {
         // Toggle direction if same column
-        if (sortDirection === "asc") {
-          setSortDirection("desc");
-        } else if (sortDirection === "desc") {
+        if (sortDirection === "desc") {
+          setSortDirection("asc");
+        } else if (sortDirection === "asc") {
           // Third click clears sort
           setSortColumn(null);
           setSortDirection(null);
         } else {
-          setSortDirection("asc");
+          // First click on an unsorted column starts with descending
+          setSortDirection("desc");
         }
       } else {
-        // New column, start with ascending
+        // New column, start with descending
         setSortColumn(column);
-        setSortDirection("asc");
+        setSortDirection("desc");
       }
     },
     [sortColumn, sortDirection]

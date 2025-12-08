@@ -21,6 +21,7 @@ interface SortOptionConfig {
 }
 
 const SORT_OPTIONS: SortOptionConfig[] = [
+  { column: "name", label: "Product name", sortType: "text" },
   { column: "price", label: "Price", sortType: "number" },
   { column: "stock", label: "Stock", sortType: "number" },
 ];
@@ -50,27 +51,29 @@ export const ProductsSortControls: React.FC<ProductsSortControlsProps> = ({
   onSort,
   getSortDirection,
 }) => (
-    <section
-        aria-label="Sort products"
-        className="mb-4 flex flex-wrap items-center gap-2 text-xs sm:text-sm"
-    >
-        {SORT_OPTIONS.map(({ column, label, sortType }) => {
-            const direction = getSortDirection(column);
-            const isActive = !!direction;
+  <section
+    aria-label="Sort products"
+    className="mb-4 flex flex-wrap items-center gap-2 text-xs sm:text-sm"
+  >
+    {SORT_OPTIONS.map(({ column, label, sortType }) => {
+      const direction = getSortDirection(column);
+      const isActive = !!direction;
 
-            return (
-                <button
-                    key={column}
-                    type="button"
-                    onClick={() => onSort(column)}
-                    className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 transition-colors ${isActive
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-700"
-                            : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"}`}
-                >
-                    {getSortIcon(direction, sortType)}
-                    <span>{label}</span>
-                </button>
-            );
-        })}
-    </section>
+      return (
+        <button
+          key={column}
+          type="button"
+          onClick={() => onSort(column)}
+          className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 transition-colors ${
+            isActive
+              ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+              : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+          }`}
+        >
+          {getSortIcon(direction, sortType)}
+          <span>{label}</span>
+        </button>
+      );
+    })}
+  </section>
 );

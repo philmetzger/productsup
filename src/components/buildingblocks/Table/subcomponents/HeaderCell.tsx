@@ -25,7 +25,7 @@ const HeaderCell: React.FC<HeaderCellProps> = ({
   sortType = "text",
 }) => {
   const baseClasses =
-    "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider";
+    "px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider";
   const clickableClasses =
     sortable || onClick
       ? "cursor-pointer hover:bg-gray-100 transition-colors select-none"
