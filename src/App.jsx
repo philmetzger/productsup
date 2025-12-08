@@ -22,18 +22,26 @@ const App = () => {
         <Sidebar currentPage={currentPage} onNavigate={handleNavigate} />
       </div>
 
-      {/* Mobile / tablet sidebar overlay */}
-      {isSidebarOpen && (
-        <div className="fixed inset-0 z-40 flex lg:hidden">
-          <div
-            className="fixed inset-0 bg-black/50"
-            onClick={() => setIsSidebarOpen(false)}
-          />
-          <div className="relative z-50 w-64 max-w-[80%] h-full">
-            <Sidebar currentPage={currentPage} onNavigate={handleNavigate} />
-          </div>
+      {/* Mobile / tablet sidebar overlay with slide animation */}
+      <div
+        className={`fixed inset-0 z-40 flex lg:hidden transition-opacity duration-300 ${
+          isSidebarOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div
+          className="absolute inset-0 bg-black/50"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+        <div
+          className={`relative z-50 w-64 max-w-[80%] h-full transform transition-transform duration-300 ease-out ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <Sidebar currentPage={currentPage} onNavigate={handleNavigate} />
         </div>
-      )}
+      </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
