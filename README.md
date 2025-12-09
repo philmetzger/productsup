@@ -11,7 +11,7 @@ Welcome to the ProductsUp take-home challenge! This exercise is designed to eval
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22+
 - npm or yarn
 
 ### Installation
@@ -22,10 +22,10 @@ git clone https://github.com/philmetzger/productsup
 cd productsup
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm run dev
 ```
 ````
 
@@ -33,10 +33,10 @@ The app will be available at `http://localhost:5173`
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `pnpm run dev` - Start development server
+- `pnpm run build` - Build for production
+- `pnpm run preview` - Preview production build
+- `pnpm run lint` - Run ESLint
 
 ## 📋 Challenge Requirements
 
@@ -180,8 +180,6 @@ src/
    - Add comments for complex logic
    - Explain non-obvious decisions
 
-### Example README Section to Add:
-
 ```markdown
 ## 🏗️ My Implementation Notes
 
@@ -195,6 +193,8 @@ src/
 - tests are located close to the files they are testing in a directory called `__tests__`
 - No need for list virtualization since we only show 10 products per page
 - Separate business logic as much as possible from presentation logic
+- Used pnpm over npm as its faster and more efficient
+- For mobile I switch to a card list view. I would argue however the table view would be fine too (they can scroll right and left) depending on the use case. I imagine users viewing a lot of data would generally use a bigger screen
 
 ### Trade-offs
 
@@ -214,7 +214,6 @@ src/
 - Remove unused files. I have left useSort with tests just as an example :)
 - Add some cursor rules and instruction files as I go to help Cursor better understand how I like to structure my code
 - Add eslint and prettier for more automated clean code
-- I would generally convert this to a Next.JS project as it would allow me to easily add api endpoints amoung other things
 
 ### AI assistance
 
@@ -222,12 +221,13 @@ src/
 - Initially Cursor created 1 file with all the code, but then I steered it into the way I prefer in which I separated business logic from presentation logic. Some of it I did manually and some I just let Cursor do the heavy lifting.
 - Every file was reviewed by me to confirm its logic, with minor manual changes by me
 - I created directories to restructure the app in order to help agent mode decide where to put files
+- I use AI in small increments so it doesnt get out of control
 
 ### Time Breakdown
 
 - Sorting: 1 hour
-- Pagination: 1 hours
-- Responsive layout: 1 hour
+- Pagination: 1.5 hours
+- Responsive layout: 30 mins
 - Polish & refactoring: 1.5 hours
 ```
 
