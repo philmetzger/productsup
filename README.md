@@ -214,6 +214,10 @@ src/
 - Remove unused files. I have left useSort with tests just as an example :)
 - Add some cursor rules and instruction files as I go to help Cursor better understand how I like to structure my code
 - Add eslint and prettier for more automated clean code
+- Use proper url routing e.g. with react-router
+- Further make type-safety consistent across the app (js to ts)
+- Pagination for large datasets (do not show all pages)
+- Make useProducts more “data-source agnostic” (service abstraction)
 
 ### AI assistance
 
