@@ -71,15 +71,14 @@ export const useProducts = () => {
     initialPage,
   });
   const { currentPage, goToPage } = pagination;
-
   // Reset to first page whenever filters or sorts change
   useEffect(() => {
     if (!hasInitializedPageReset.current) {
       hasInitializedPageReset.current = true;
       return;
     }
-    goToPage(1);
-  }, [selectedCategory, sorts, goToPage]);
+    goToPage(currentPage);
+  }, [currentPage, selectedCategory, sorts, goToPage]);
 
   // Sync filter, sort, and page state to URL
   useEffect(() => {

@@ -86,7 +86,6 @@ const HeaderCell: React.FC<HeaderCellProps> = ({
         <button
           type="button"
           className="flex items-center gap-2 w-full text-left cursor-pointer"
-          onClick={onClick}
           aria-label={
             labelText
               ? `${labelText}, ${sortStatus}. Activate to change sort order.`

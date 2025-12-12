@@ -22,9 +22,21 @@ const Products: React.FC = () => {
     getSortPriority,
   } = useProducts();
 
+  const [isMobileView, setIsMobileView] = React.useState(true);
+
   return (
-    <main aria-labelledby="products-heading">
+    <div aria-labelledby="products-heading">
       <ProductsHeader />
+
+      <div className="mb-4 flex justify-end">
+        <button
+          type="button"
+          className="rounded border border-gray-300 px-3 py-1 text-sm shadow-sm hover:bg-gray-50"
+          onClick={() => setIsMobileView((prev) => !prev)}
+        >
+          {isMobileView ? "Switch to desktop view" : "Switch to mobile view"}
+        </button>
+      </div>
 
       <div className="mb-4">
         <ProductsFilters
@@ -34,7 +46,7 @@ const Products: React.FC = () => {
       </div>
 
       {/* Mobile-only sort controls (desktop uses table header sorting) */}
-      <div className="mb-4 md:hidden">
+      <div className={`mb-4 md:hidden ${isMobileView ? "" : "hidden"}`}>
         <ProductsSortControls
           onSort={handleSort}
           getSortDirection={getSortDirection}
@@ -42,7 +54,7 @@ const Products: React.FC = () => {
       </div>
 
       {/* Mobile: card list */}
-      <div className="mb-4 md:hidden">
+      <div className={`mb-4 ${isMobileView ? "" : "hidden"}`}>
         {isLoading ? (
           <ProductsCardsSkeleton />
         ) : (
@@ -51,7 +63,10 @@ const Products: React.FC = () => {
       </div>
 
       {/* Desktop: table view */}
-      <Table className="hidden md:block" ariaLabel="Products table">
+      <Table
+        className={isMobileView ? "hidden" : "md:block"}
+        ariaLabel="Products table"
+      >
         <Table.Header>
           <Table.HeaderCell
             sortable={true}
@@ -102,7 +117,7 @@ const Products: React.FC = () => {
           totalItems={pagination.totalItems}
         />
       )}
-    </main>
+    </div>
   );
 };
 
